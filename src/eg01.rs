@@ -1,7 +1,6 @@
 extern crate sdl2;
 extern crate native;
 
-//use sdl2;
 use sdl2::video::{Window, PosCentered, OpenGL};
 use sdl2::timer::{delay};
 
@@ -12,6 +11,8 @@ fn start(argc: int, argv: **u8) -> int {
 
 #[main]
 fn main() {
+    // start sdl2
+
     sdl2::init(sdl2::InitVideo);
 
     // Create a window
