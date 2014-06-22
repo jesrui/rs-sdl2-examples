@@ -14,3 +14,7 @@ To build the examples:
 
 Displays a window for a moment then quits.
 
+## [Eg02](src/eg02.rs)
+
+Handling events.
+

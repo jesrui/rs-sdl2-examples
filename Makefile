@@ -5,7 +5,11 @@ VPATH=src
 %: %.rs
 	$(RUST) $(RFLAGS) $^ -o $@
 
+.DEFAULT: all
+all: eg01 eg02
+
 eg01: eg01.rs
 
-.DEFAULT: all
-all: eg01
+.PHONY: clean
+clean:
+	rm -f ./eg*
