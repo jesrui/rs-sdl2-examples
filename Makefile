@@ -6,9 +6,7 @@ VPATH=src
 	$(RUST) $(RFLAGS) $^ -o $@
 
 .DEFAULT: all
-all: eg01 eg02
-
-eg01: eg01.rs
+all: eg01 eg02 eg03
 
 .PHONY: clean
 clean:
