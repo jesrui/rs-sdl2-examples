@@ -18,3 +18,7 @@ Displays a window for a moment then quits.
 
 Handling events.
 
+## [eg03](src/eg03.rs)
+
+Rendering shapes.
+
