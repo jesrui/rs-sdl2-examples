@@ -15,7 +15,7 @@ fn main() {
     sdl2::init(sdl2::InitEverything);
 
     // Create a window and show it
-    let window  = match Window::new("eg01", PosCentered, PosCentered, 640, 480, OpenGL) {
+    let window  = match Window::new("eg02", PosCentered, PosCentered, 640, 480, OpenGL) {
         Ok(window) => window,
         Err(err)   => fail!(format!("failed to create window: {}", err))
     };
