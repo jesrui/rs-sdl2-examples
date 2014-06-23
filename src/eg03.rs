@@ -18,13 +18,13 @@ fn main() {
     // Create a window
     let window  = match Window::new("eg03", PosCentered, PosCentered, 640, 480, OpenGL) {
         Ok(window) => window,
-        Err(err)   => fail!(format!("failed to create window: {}", err))
+        Err(err)   => fail!("failed to create window: {}", err)
     };
 
     // Create a rendering context
     let renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::DriverAuto, sdl2::render::Accelerated) {
         Ok(renderer) => renderer,
-        Err(err) => fail!(format!("failed to create renderer: {}", err))
+        Err(err) => fail!("failed to create renderer: {}", err)
     };
 
     // Set the drawing color to a light blue.

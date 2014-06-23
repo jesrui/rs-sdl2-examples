@@ -19,7 +19,7 @@ fn main() {
 
     let window = match Window::new("eg01", PosCentered, PosCentered, 640, 480, OpenGL) {
         Ok(window) => window,
-        Err(err)   => fail!(format!("failed to create window: {}", err))
+        Err(err)   => fail!("failed to create window: {}", err)
     };
 
     // Display the window for 3 seconds
