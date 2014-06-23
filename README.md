@@ -22,3 +22,6 @@ Handling events.
 
 Rendering shapes.
 
+## [eg04](src/eg04.rs)
+
+Displaying images.
