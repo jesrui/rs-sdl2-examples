@@ -1,0 +1,30 @@
+[package]
+
+name    = "sdl2-examples"
+version = "0.0.1"
+authors = [ "jdeseno" ]
+
+[[bin]]
+
+name = "eg01"
+path = "src/eg01.rs"
+
+[[bin]]
+
+name = "eg02"
+path = "src/eg02.rs"
+
+[[bin]]
+
+name = "eg03"
+path = "src/eg03.rs"
+
+[[bin]]
+
+name = "eg04"
+path = "src/eg04.rs"
+
+[dependencies.sdl2]
+
+path = "deps/rust-sdl2/"
+
