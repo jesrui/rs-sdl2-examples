@@ -4,11 +4,15 @@
 
 You will need [rust](http://www.rust-lang.org/) and [SDL2](http://www.libsdl.org) on your system.
 
-To build the examples:
+To build the examples via make:
 
 1. `git submodule update`
 3. run `make` inside the `deps/rust-sdl2` directory
 2. then `make` from the root of this repository
+
+To build the examples via [Cargo](http://crates.io/)
+
+1. `cargo build`
 
 ## [Eg01](src/eg01.rs)
 
