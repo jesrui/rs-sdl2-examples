@@ -14,7 +14,7 @@ fn start(argc: int, argv: **u8) -> int {
 fn main() {
     sdl2::init(sdl2::InitEverything);
 
-    let window  = match Window::new("eg03", PosCentered, PosCentered, 640, 480, OpenGL) {
+    let window  = match Window::new("eg04", PosCentered, PosCentered, 640, 480, OpenGL) {
         Ok(window) => window,
         Err(err)   => fail!("failed to create window: {}", err)
     };
