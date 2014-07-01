@@ -4,12 +4,6 @@ extern crate native;
 use sdl2::video::{Window, PosCentered, OpenGL};
 use sdl2::timer::{delay};
 
-#[start]
-fn start(argc: int, argv: **u8) -> int {
-    native::start(argc, argv, main)
-}
-
-#[main]
 fn main() {
     // start sdl2
 

@@ -5,12 +5,6 @@ use sdl2::video::{Window, PosCentered, OpenGL};
 use sdl2::event::{QuitEvent, poll_event};
 use sdl2::rect::{Rect};
 
-#[start]
-fn start(argc: int, argv: **u8) -> int {
-    native::start(argc, argv, main)
-}
-
-#[main]
 fn main() {
     // start sdl2 with everything
     sdl2::init(sdl2::InitEverything);
