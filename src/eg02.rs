@@ -1,15 +1,15 @@
 extern crate sdl2;
 extern crate native;
 
-use sdl2::video::{Window, PosCentered, OpenGL};
+use sdl2::video::{Window, PosCentered, OPENGL};
 use sdl2::event::{QuitEvent, NoEvent, poll_event};
 
 fn main() {
     // start sdl2 with everything
-    sdl2::init(sdl2::InitEverything);
+    sdl2::init(sdl2::INIT_EVERYTHING);
 
     // Create a window and show it
-    let window  = match Window::new("eg02", PosCentered, PosCentered, 640, 480, OpenGL) {
+    let window  = match Window::new("eg02", PosCentered, PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
         Err(err)   => fail!("failed to create window: {}", err)
     };
