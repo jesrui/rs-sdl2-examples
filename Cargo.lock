@@ -2,11 +2,11 @@
 name = "sdl2-examples"
 version = "0.0.1"
 dependencies = [
- "sdl2 0.0.1-alpha.1 (git+https://github.com/AngryLawyer/rust-sdl2.git#ea07e2e04c6e5530949e2a04079ac6918766e68c)",
+ "sdl2 0.0.1-alpha.1 (git+https://github.com/AngryLawyer/rust-sdl2.git#99c95bd85641234b29b361000681e9df132b5529)",
 ]
 
 [[package]]
 name = "sdl2"
 version = "0.0.1-alpha.1"
-source = "git+https://github.com/AngryLawyer/rust-sdl2.git#ea07e2e04c6e5530949e2a04079ac6918766e68c"
+source = "git+https://github.com/AngryLawyer/rust-sdl2.git#99c95bd85641234b29b361000681e9df132b5529"
 
