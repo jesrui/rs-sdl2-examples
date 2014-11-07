@@ -12,13 +12,13 @@ fn main() {
     // Create a window
     let window  = match Window::new("eg03", PosCentered, PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
-        Err(err)   => fail!("failed to create window: {}", err)
+        Err(err)   => panic!("failed to create window: {}", err)
     };
 
     // Create a rendering context
     let renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::DriverAuto, sdl2::render::ACCELERATED) {
         Ok(renderer) => renderer,
-        Err(err) => fail!("failed to create renderer: {}", err)
+        Err(err) => panic!("failed to create renderer: {}", err)
     };
 
     // Set the drawing color to a light blue.
@@ -34,14 +34,14 @@ fn main() {
     let border_rect = Rect::new(320-64, 240-64, 128, 128);
     let _ = match renderer.draw_rect(&border_rect) {
         Ok(_)    => {},
-        Err(err) => fail!("failed to draw rect: {}", err) 
+        Err(err) => panic!("failed to draw rect: {}", err) 
     };
 
     // Create a smaller centered Rect, filling it in the same dark blue.
     let inner_rect = Rect::new(320-60, 240-60, 120, 120);
     let _ = match renderer.fill_rect(&inner_rect) {
         Ok(_)    => {},
-        Err(err) => fail!("failed to draw rect: {}", err) 
+        Err(err) => panic!("failed to draw rect: {}", err) 
     };
 
     // Swap our buffer for the present buffer, displaying it.

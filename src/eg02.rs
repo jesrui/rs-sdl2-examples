@@ -11,7 +11,7 @@ fn main() {
     // Create a window and show it
     let window  = match Window::new("eg02", PosCentered, PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
-        Err(err)   => fail!("failed to create window: {}", err)
+        Err(err)   => panic!("failed to create window: {}", err)
     };
     window.show();
 
