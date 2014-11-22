@@ -2,7 +2,7 @@ extern crate sdl2;
 extern crate native;
 
 use sdl2::video::{Window, PosCentered, OPENGL};
-use sdl2::event::{QuitEvent, poll_event};
+use sdl2::event::{Quit, poll_event};
 use sdl2::surface::{Surface};
 
 fn main() {
@@ -12,7 +12,7 @@ fn main() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
-    let renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::DriverAuto, sdl2::render::ACCELERATED) {
+    let renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::RenderDriverIndex::Auto, sdl2::render::ACCELERATED) {
         Ok(renderer) => renderer,
         Err(err) => panic!("failed to create renderer: {}", err)
     };
@@ -42,7 +42,7 @@ fn main() {
     // loop until we receive a QuitEvent
     'event : loop {
         match poll_event() {
-            QuitEvent(_) => break 'event,
+            Quit(_) => break 'event,
             _            => continue
         }
     }
