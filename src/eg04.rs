@@ -1,5 +1,4 @@
 extern crate sdl2;
-extern crate native;
 
 use sdl2::video::{Window, PosCentered, OPENGL};
 use sdl2::event::{Quit, poll_event};
