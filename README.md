@@ -4,9 +4,13 @@
 
 You will need [rust](http://www.rust-lang.org/) and [SDL2](http://www.libsdl.org) on your system.
 
-To build the examples via [Cargo](http://crates.io/)
+Build the examples via [Cargo](http://crates.io/)
 
-1. `cargo build`
+> cargo build
+
+Some examples will require assets so run each example from the root of the project.
+
+> ./target/eg04
 
 ## [Eg01](src/eg01.rs)
 
