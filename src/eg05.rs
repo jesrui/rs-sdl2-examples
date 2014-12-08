@@ -7,7 +7,7 @@ use sdl2::surface::{Surface};
 fn main() {
     sdl2::init(sdl2::INIT_EVERYTHING);
 
-    let window  = match Window::new("eg04", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
+    let window  = match Window::new("eg05", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
