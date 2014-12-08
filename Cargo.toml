@@ -24,7 +24,13 @@ path = "src/eg03.rs"
 name = "eg04"
 path = "src/eg04.rs"
 
+[[bin]]
+
+name = "eg05"
+path = "src/eg05.rs"
+
 [dependencies.sdl2]
 
-git  = "https://github.com/AngryLawyer/rust-sdl2.git"
+#git  = "https://github.com/AngryLawyer/rust-sdl2.git"
+path = "../rust-sdl2"
 
