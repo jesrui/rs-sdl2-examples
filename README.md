@@ -26,4 +26,8 @@ Rendering shapes.
 
 ## [eg04](src/eg04.rs)
 
-Displaying images.
+Surface rendering.
+
+## [eg05](src/eg05.rs)
+
+Texture rendering.
