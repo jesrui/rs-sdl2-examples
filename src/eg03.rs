@@ -1,7 +1,7 @@
 extern crate sdl2;
 
-use sdl2::video::{Window, PosCentered, OPENGL};
-use sdl2::event::{Quit, poll_event};
+use sdl2::video::{WindowPos, Window, OPENGL};
+use sdl2::event::{Event, poll_event};
 use sdl2::rect::{Rect};
 
 fn main() {
@@ -9,7 +9,7 @@ fn main() {
     sdl2::init(sdl2::INIT_EVERYTHING);
 
     // Create a window
-    let window  = match Window::new("eg03", PosCentered, PosCentered, 640, 480, OPENGL) {
+    let window  = match Window::new("eg03", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
@@ -21,13 +21,13 @@ fn main() {
     };
 
     // Set the drawing color to a light blue.
-    let _ = renderer.set_draw_color(sdl2::pixels::RGB(101, 208, 246));
+    let _ = renderer.set_draw_color(sdl2::pixels::Color::RGB(101, 208, 246));
 
     // Clear the buffer, using the light blue color set above.
     let _ = renderer.clear();
 
     // Set the drawing color to a darker blue.
-    let _ = renderer.set_draw_color(sdl2::pixels::RGB(0, 153, 204));
+    let _ = renderer.set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
 
     // Create centered Rect, draw the outline of the Rect in our dark blue color.
     let border_rect = Rect::new(320-64, 240-64, 128, 128);
@@ -49,7 +49,7 @@ fn main() {
     // loop until we receive a QuitEvent
     'event : loop {
         match poll_event() {
-            Quit(_) => break 'event,
+            Event::Quit(_) => break 'event,
             _            => continue
         }
     }

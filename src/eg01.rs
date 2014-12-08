@@ -1,6 +1,6 @@
 extern crate sdl2;
 
-use sdl2::video::{Window, PosCentered, OPENGL};
+use sdl2::video::{WindowPos, Window, OPENGL};
 use sdl2::timer::{delay};
 
 fn main() {
@@ -10,7 +10,7 @@ fn main() {
 
     // Create a window
 
-    let window = match Window::new("eg01", PosCentered, PosCentered, 640, 480, OPENGL) {
+    let window = match Window::new("eg01", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
