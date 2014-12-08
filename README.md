@@ -20,14 +20,14 @@ Displays a window for a moment then quits.
 
 Handling events.
 
-## [eg03](src/eg03.rs)
+## [Eg03](src/eg03.rs)
 
 Rendering shapes.
 
-## [eg04](src/eg04.rs)
+## [Eg04](src/eg04.rs)
 
 Surface rendering.
 
-## [eg05](src/eg05.rs)
+## [Eg05](src/eg05.rs)
 
 Texture rendering.
