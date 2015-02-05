@@ -1,3 +1,5 @@
+#![feature(path)]
+
 extern crate sdl2;
 
 use sdl2::video::{WindowPos, Window, OPENGL};
@@ -30,12 +32,14 @@ fn main() {
         Err(err)    => panic!("failed to convert surface: {}", err)
     };
 
-    let _ = renderer.drawer().clear();
+    let mut drawer = renderer.drawer();
+
+    let _ = drawer.clear();
     // Display the texture.
     // Omitting the src & dst Rect arguments will cause our image to stretch across the entire buffer.
     // Try passing Some(surface.get_rect()) for src & dst instead of None & see how things change.
-    let _ = renderer.drawer().copy(&texture, None, None);
-    let _ = renderer.drawer().present();
+    let _ = drawer.copy(&texture, None, None);
+    let _ = drawer.present();
 
 
     // loop until we receive a QuitEvent

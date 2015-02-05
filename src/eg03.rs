@@ -20,25 +20,28 @@ fn main() {
         Err(err) => panic!("failed to create renderer: {}", err)
     };
 
+    // since the drawer changes, it should be borrowed as mutable
+    let mut drawer = renderer.drawer();
+
     // Set the drawing color to a light blue.
-    let _ = renderer.drawer().set_draw_color(sdl2::pixels::Color::RGB(101, 208, 246));
+    let _ = drawer.set_draw_color(sdl2::pixels::Color::RGB(101, 208, 246));
 
     // Clear the buffer, using the light blue color set above.
-    let _ = renderer.drawer().clear();
+    let _ = drawer.clear();
 
     // Set the drawing color to a darker blue.
-    let _ = renderer.drawer().set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
+    let _ = drawer.set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
 
     // Create centered Rect, draw the outline of the Rect in our dark blue color.
     let border_rect = Rect::new(320-64, 240-64, 128, 128);
-    let _ = renderer.drawer().draw_rect(border_rect);
+    let _ = drawer.draw_rect(border_rect);
 
     // Create a smaller centered Rect, filling it in the same dark blue.
     let inner_rect = Rect::new(320-60, 240-60, 120, 120);
-    let _ = renderer.drawer().fill_rect(inner_rect);
+    let _ = drawer.fill_rect(inner_rect);
 
     // Swap our buffer for the present buffer, displaying it.
-    let _ = renderer.drawer().present();
+    let _ = drawer.present();
 
     // loop until we receive a QuitEvent
     'event : loop {
