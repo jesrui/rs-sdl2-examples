@@ -30,19 +30,19 @@ fn main() {
         Err(err)    => panic!("failed to convert surface: {}", err)
     };
 
-    let _ = renderer.clear();
+    let _ = renderer.drawer().clear();
     // Display the texture.
     // Omitting the src & dst Rect arguments will cause our image to stretch across the entire buffer.
     // Try passing Some(surface.get_rect()) for src & dst instead of None & see how things change.
-    let _ = renderer.copy(&texture, None, None);
-    let _ = renderer.present();
+    let _ = renderer.drawer().copy(&texture, None, None);
+    let _ = renderer.drawer().present();
 
 
     // loop until we receive a QuitEvent
     'event : loop {
         match poll_event() {
-            Event::Quit(_) => break 'event,
-            _            => continue
+            Event::Quit{..} => break 'event,
+            _               => continue
         }
     }
 

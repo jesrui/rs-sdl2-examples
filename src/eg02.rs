@@ -18,10 +18,8 @@ fn main() {
     'event : loop {
         // poll_event returns the most recent event or NoEvent if nothing has happened
         match poll_event() {
-            Event::Quit(_) => break 'event,
-            Event::None => continue,
-            // print the event to the console
-            event        => println!("event: {}", event),
+            Event::Quit{..} => break 'event,
+            _               => continue
         }
     }
 

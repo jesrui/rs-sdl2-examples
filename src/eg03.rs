@@ -21,36 +21,30 @@ fn main() {
     };
 
     // Set the drawing color to a light blue.
-    let _ = renderer.set_draw_color(sdl2::pixels::Color::RGB(101, 208, 246));
+    let _ = renderer.drawer().set_draw_color(sdl2::pixels::Color::RGB(101, 208, 246));
 
     // Clear the buffer, using the light blue color set above.
-    let _ = renderer.clear();
+    let _ = renderer.drawer().clear();
 
     // Set the drawing color to a darker blue.
-    let _ = renderer.set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
+    let _ = renderer.drawer().set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
 
     // Create centered Rect, draw the outline of the Rect in our dark blue color.
     let border_rect = Rect::new(320-64, 240-64, 128, 128);
-    let _ = match renderer.draw_rect(&border_rect) {
-        Ok(_)    => {},
-        Err(err) => panic!("failed to draw rect: {}", err) 
-    };
+    let _ = renderer.drawer().draw_rect(border_rect);
 
     // Create a smaller centered Rect, filling it in the same dark blue.
     let inner_rect = Rect::new(320-60, 240-60, 120, 120);
-    let _ = match renderer.fill_rect(&inner_rect) {
-        Ok(_)    => {},
-        Err(err) => panic!("failed to draw rect: {}", err) 
-    };
+    let _ = renderer.drawer().fill_rect(inner_rect);
 
     // Swap our buffer for the present buffer, displaying it.
-    let _ = renderer.present();
+    let _ = renderer.drawer().present();
 
     // loop until we receive a QuitEvent
     'event : loop {
         match poll_event() {
-            Event::Quit(_) => break 'event,
-            _            => continue
+            Event::Quit{..} => break 'event,
+            _               => continue
         }
     }
 

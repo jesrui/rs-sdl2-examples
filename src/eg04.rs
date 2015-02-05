@@ -34,8 +34,8 @@ fn main() {
     // loop until we receive a QuitEvent
     'event : loop {
         match poll_event() {
-            Event::Quit(_) => break 'event,
-            _            => continue
+            Event::Quit{..} => break 'event,
+            _               => continue
         }
     }
 
