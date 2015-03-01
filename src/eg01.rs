@@ -6,7 +6,7 @@ use sdl2::timer::{delay};
 fn main() {
     // start sdl2
 
-    sdl2::init(sdl2::INIT_VIDEO);
+    let _ = sdl2::init(sdl2::INIT_VIDEO);
 
     // Create a window
 
@@ -19,9 +19,5 @@ fn main() {
 
     window.show();
     delay(3000);
-
-    // then quit
-
-    sdl2::quit();
 }
 
