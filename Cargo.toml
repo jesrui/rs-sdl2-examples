@@ -30,3 +30,4 @@ name = "eg05"
 path = "src/eg05.rs"
 
 [dependencies.sdl2]
+git = "https://github.com/AngryLawyer/rust-sdl2.git"

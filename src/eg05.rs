@@ -1,5 +1,7 @@
 extern crate sdl2;
 
+use std::path::Path;
+
 use sdl2::video::{WindowPos, Window, OPENGL};
 use sdl2::event::{Event};
 use sdl2::surface::{Surface};
