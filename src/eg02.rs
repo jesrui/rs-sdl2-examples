@@ -11,13 +11,17 @@ fn main() {
     };
 
     // Create a window and show it
-    let window  = match Window::new("eg02", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
+    let mut window  = match Window::new(&ctx, "eg02", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
-    window.show();
 
     let mut events = ctx.event_pump();
+
+    {
+        let mut window_properties = window.properties(&events);
+        window_properties.show();
+    }
 
     // loop until we receive a QuitEvent
     'event : loop {

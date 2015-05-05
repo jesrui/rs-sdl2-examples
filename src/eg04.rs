@@ -12,7 +12,7 @@ fn main() {
         Err(err) => panic!("Failed to start SDL2: {}", err)
     };
 
-    let window  = match Window::new("eg04", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
+    let mut window = match Window::new(&ctx, "eg04", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
@@ -24,19 +24,25 @@ fn main() {
         Err(err)    => panic!("failed to load surface: {}", err)
     };
 
-    // get the surface used by our window
-    let screen = match window.get_surface() {
-        Ok(s) => s,
-        Err(err) => panic!("failed to get window surface: {}", err)
-    };
-
-    // copy our surface unto the window's surface
-    screen.blit(&surface, None, None);
-
-    // update the window to display the changed surface
-    window.update_surface();
-
     let mut events = ctx.event_pump();
+    {
+        let mut window_properties = window.properties(&events);
+        {
+            // get the surface used by our window
+            let screen = window_properties.get_surface().unwrap();
+
+            // copy our surface unto the window's surface
+            screen.blit(&surface, None, None);
+        }
+
+        {
+            // update the window to display the changed surface
+            match window_properties.update_surface() {
+                Ok(_) => {},
+                Err(err) => panic!("failed to update window surface: {}", err)
+            }
+        }
+    }
 
     // loop until we receive a QuitEvent
     'event : loop {

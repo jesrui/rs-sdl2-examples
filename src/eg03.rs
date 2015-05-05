@@ -12,13 +12,13 @@ fn main() {
     };
 
     // Create a window
-    let window  = match Window::new("eg03", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
+    let window  = match Window::new(&ctx, "eg03", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
 
     // Create a rendering context
-    let renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::RenderDriverIndex::Auto, sdl2::render::ACCELERATED) {
+    let mut renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::RenderDriverIndex::Auto, sdl2::render::ACCELERATED) {
         Ok(renderer) => renderer,
         Err(err) => panic!("failed to create renderer: {}", err)
     };
