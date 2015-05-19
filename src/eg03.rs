@@ -1,24 +1,20 @@
 extern crate sdl2;
 
-use sdl2::video::{WindowPos, Window, OPENGL};
 use sdl2::event::{Event};
 use sdl2::rect::{Rect};
 
 fn main() {
     // start sdl2 with everything
-    let ctx = match sdl2::init(sdl2::INIT_EVERYTHING) {
-        Ok(ctx)  => ctx,
-        Err(err) => panic!("Failed to start SDL2: {}", err)
-    };
+    let ctx = sdl2::init().everything().unwrap();
 
     // Create a window
-    let window  = match Window::new(&ctx, "eg03", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
+    let window  = match ctx.window("eg03", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
 
     // Create a rendering context
-    let mut renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::RenderDriverIndex::Auto, sdl2::render::ACCELERATED) {
+    let mut renderer = match window.renderer().build() {
         Ok(renderer) => renderer,
         Err(err) => panic!("failed to create renderer: {}", err)
     };
