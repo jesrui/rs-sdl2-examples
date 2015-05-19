@@ -1,17 +1,13 @@
 extern crate sdl2;
 
-use sdl2::video::{WindowPos, Window, OPENGL};
 use sdl2::event::{Event};
 
 fn main() {
     // start sdl2 with everything
-    let ctx = match sdl2::init(sdl2::INIT_EVERYTHING) {
-        Ok(ctx)  => ctx,
-        Err(err) => panic!("Failed to start SDL2: {}", err)
-    };
+    let ctx = sdl2::init().everything().unwrap();
 
     // Create a window and show it
-    let mut window  = match Window::new(&ctx, "eg02", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
+    let mut window  = match ctx.window("eg02", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };

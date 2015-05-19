@@ -2,21 +2,18 @@ extern crate sdl2;
 
 use std::path::Path;
 
-use sdl2::video::{WindowPos, Window, OPENGL};
 use sdl2::event::{Event};
 use sdl2::surface::{Surface};
 
 fn main() {
-    let ctx = match sdl2::init(sdl2::INIT_EVERYTHING) {
-        Ok(ctx)  => ctx,
-        Err(err) => panic!("Failed to start SDL2: {}", err)
-    };
+    let ctx = sdl2::init().everything().unwrap();
 
-    let window  = match Window::new(&ctx, "eg05", WindowPos::PosCentered, WindowPos::PosCentered, 640, 480, OPENGL) {
+    let window  = match ctx.window("eg05", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
-    let mut renderer = match sdl2::render::Renderer::from_window(window, sdl2::render::RenderDriverIndex::Auto, sdl2::render::ACCELERATED) {
+
+    let mut renderer = match window.renderer().build() {
         Ok(renderer) => renderer,
         Err(err) => panic!("failed to create renderer: {}", err)
     };
