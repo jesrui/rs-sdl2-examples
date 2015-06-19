@@ -6,7 +6,7 @@ use sdl2::event::{Event};
 use sdl2::surface::{Surface};
 
 fn main() {
-    let ctx = sdl2::init().everything().unwrap();
+    let mut ctx = sdl2::init().everything().unwrap();
 
     let window  = match ctx.window("eg05", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
@@ -20,7 +20,7 @@ fn main() {
 
     // Load a surface.
     // Surfaces live in system RAM, so they aren't ideal for performance.
-    let surface = match Surface::from_bmp(&Path::new("res/ice-troll.bmp")) {
+    let surface = match Surface::load_bmp(&Path::new("res/ice-troll.bmp")) {
         Ok(surface) => surface,
         Err(err)    => panic!("failed to load surface: {}", err)
     };

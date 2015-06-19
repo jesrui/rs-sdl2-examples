@@ -14,8 +14,7 @@ fn main() {
         Err(err)   => panic!("failed to create window: {}", err)
     };
 
-    let event_pump = ctx.event_pump();
-    let mut window_properties = window.properties(&event_pump);
+    let mut window_properties = window.properties(&ctx);
 
     // Display the window for 3 seconds
 
