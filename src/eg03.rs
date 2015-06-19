@@ -5,7 +5,7 @@ use sdl2::rect::{Rect};
 
 fn main() {
     // start sdl2 with everything
-    let ctx = sdl2::init().everything().unwrap();
+    let mut ctx = sdl2::init().everything().unwrap();
 
     // Create a window
     let window  = match ctx.window("eg03", 640, 480).position_centered().opengl().build() {
