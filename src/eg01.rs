@@ -1,24 +1,22 @@
 extern crate sdl2;
 
-use sdl2::timer::{delay};
-
 fn main() {
     // start sdl2
 
-    let ctx = sdl2::init().video().unwrap();
+    let ctx = sdl2::init().unwrap();
+    let video_ctx = ctx.video().unwrap();
+    let mut timer = ctx.timer().unwrap();
 
     // Create a window
 
-    let mut window = match ctx.window("eg01", 640, 480).position_centered().opengl().build() {
+    let mut window = match video_ctx.window("eg01", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
 
-    let mut window_properties = window.properties(&ctx);
-
     // Display the window for 3 seconds
 
-    window_properties.show();
-    delay(3000);
+    window.show();
+    timer.delay(3000);
 }
 
