@@ -5,10 +5,11 @@ use sdl2::rect::{Rect};
 
 fn main() {
     // start sdl2 with everything
-    let mut ctx = sdl2::init().everything().unwrap();
-
+    let ctx = sdl2::init().unwrap();
+    let video_ctx = ctx.video().unwrap();
+    
     // Create a window
-    let window  = match ctx.window("eg03", 640, 480).position_centered().opengl().build() {
+    let window  = match video_ctx.window("eg03", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
@@ -19,30 +20,27 @@ fn main() {
         Err(err) => panic!("failed to create renderer: {}", err)
     };
 
-    // since the drawer changes, it should be borrowed as mutable
-    let mut drawer = renderer.drawer();
-
     // Set the drawing color to a light blue.
-    let _ = drawer.set_draw_color(sdl2::pixels::Color::RGB(101, 208, 246));
+    let _ = renderer.set_draw_color(sdl2::pixels::Color::RGB(101, 208, 246));
 
     // Clear the buffer, using the light blue color set above.
-    let _ = drawer.clear();
+    let _ = renderer.clear();
 
     // Set the drawing color to a darker blue.
-    let _ = drawer.set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
+    let _ = renderer.set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
 
     // Create centered Rect, draw the outline of the Rect in our dark blue color.
-    let border_rect = Rect::new(320-64, 240-64, 128, 128);
-    let _ = drawer.draw_rect(border_rect);
+    let border_rect = Rect::new(320-64, 240-64, 128, 128).unwrap().unwrap();
+    let _ = renderer.draw_rect(border_rect);
 
     // Create a smaller centered Rect, filling it in the same dark blue.
-    let inner_rect = Rect::new(320-60, 240-60, 120, 120);
-    let _ = drawer.fill_rect(inner_rect);
+    let inner_rect = Rect::new(320-60, 240-60, 120, 120).unwrap().unwrap();
+    let _ = renderer.fill_rect(inner_rect);
 
     // Swap our buffer for the present buffer, displaying it.
-    let _ = drawer.present();
+    let _ = renderer.present();
 
-    let mut events = ctx.event_pump();
+    let mut events = ctx.event_pump().unwrap();
 
     // loop until we receive a QuitEvent
     'event : loop {
