@@ -6,9 +6,10 @@ use sdl2::event::{Event};
 use sdl2::surface::{Surface};
 
 fn main() {
-    let mut ctx = sdl2::init().everything().unwrap();
+    let ctx = sdl2::init().unwrap();
+    let video_ctx = ctx.video().unwrap();
 
-    let mut window  = match ctx.window("eg04", 640, 480).position_centered().opengl().build() {
+    let window  = match video_ctx.window("eg04", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
@@ -20,26 +21,29 @@ fn main() {
         Err(err)    => panic!("failed to load surface: {}", err)
     };
 
+    let mut events = ctx.event_pump().unwrap();
+
     {
-        let mut window_properties = window.properties(&ctx);
         {
             // get the surface used by our window
-            let screen = window_properties.get_surface().unwrap();
+            let screen = window.surface(&events).unwrap();
 
             // copy our surface unto the window's surface
-            screen.blit(&surface, None, None);
+            unsafe {
+                // this is somewhat ugly, but in the current state
+                // there is no easy SurfaceRef -> Surface conversion
+                let _ = surface.blit(None, Surface::from_ll(screen.raw()), None);
+            }
         }
 
         {
             // update the window to display the changed surface
-            match window_properties.update_surface() {
+            match window.update_surface() {
                 Ok(_) => {},
                 Err(err) => panic!("failed to update window surface: {}", err)
             }
         }
     }
-
-    let mut events = ctx.event_pump();
 
     // loop until we receive a QuitEvent
     'event : loop {
