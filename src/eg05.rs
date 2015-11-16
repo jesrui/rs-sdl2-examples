@@ -6,9 +6,10 @@ use sdl2::event::{Event};
 use sdl2::surface::{Surface};
 
 fn main() {
-    let mut ctx = sdl2::init().everything().unwrap();
+    let ctx = sdl2::init().unwrap();
+    let video_ctx = ctx.video().unwrap();
 
-    let window  = match ctx.window("eg05", 640, 480).position_centered().opengl().build() {
+    let window  = match video_ctx.window("eg05", 640, 480).position_centered().opengl().build() {
         Ok(window) => window,
         Err(err)   => panic!("failed to create window: {}", err)
     };
@@ -32,16 +33,14 @@ fn main() {
         Err(err)    => panic!("failed to convert surface: {}", err)
     };
 
-    let mut drawer = renderer.drawer();
-
-    let _ = drawer.clear();
+    let _ = renderer.clear();
     // Display the texture.
     // Omitting the src & dst Rect arguments will cause our image to stretch across the entire buffer.
     // Try passing Some(surface.get_rect()) for src & dst instead of None & see how things change.
-    let _ = drawer.copy(&texture, None, None);
-    let _ = drawer.present();
+    let _ = renderer.copy(&texture, None, None);
+    let _ = renderer.present();
 
-    let mut events = ctx.event_pump();
+    let mut events = ctx.event_pump().unwrap();
 
     // loop until we receive a QuitEvent
     'event : loop {
