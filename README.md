@@ -10,7 +10,7 @@ Build the examples via [Cargo](http://crates.io/)
 
 Some examples will require assets so run each example from the root of the project.
 
-> ./target/debug/eg04
+> cargo run --bin g04
 
 ## [Eg01](src/eg01.rs)
 
