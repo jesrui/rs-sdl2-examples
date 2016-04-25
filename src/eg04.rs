@@ -3,7 +3,7 @@ extern crate sdl2;
 use std::path::Path;
 
 use sdl2::event::{Event};
-use sdl2::surface::{Surface};
+use sdl2::surface::{Surface,SurfaceRef};
 
 fn main() {
     let ctx = sdl2::init().unwrap();
@@ -32,7 +32,7 @@ fn main() {
             unsafe {
                 // this is somewhat ugly, but in the current state
                 // there is no easy SurfaceRef -> Surface conversion
-                let _ = surface.blit(None, Surface::from_ll(screen.raw()), None);
+                let _ = surface.blit(None, SurfaceRef::from_ll_mut(screen.raw()), None);
             }
         }
 

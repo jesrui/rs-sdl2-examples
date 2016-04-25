@@ -30,11 +30,11 @@ fn main() {
     let _ = renderer.set_draw_color(sdl2::pixels::Color::RGB(0, 153, 204));
 
     // Create centered Rect, draw the outline of the Rect in our dark blue color.
-    let border_rect = Rect::new(320-64, 240-64, 128, 128).unwrap().unwrap();
+    let border_rect = Rect::new(320-64, 240-64, 128, 128);
     let _ = renderer.draw_rect(border_rect);
 
     // Create a smaller centered Rect, filling it in the same dark blue.
-    let inner_rect = Rect::new(320-60, 240-60, 120, 120).unwrap().unwrap();
+    let inner_rect = Rect::new(320-60, 240-60, 120, 120);
     let _ = renderer.fill_rect(inner_rect);
 
     // Swap our buffer for the present buffer, displaying it.

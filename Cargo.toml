@@ -29,4 +29,5 @@ path = "src/eg04.rs"
 name = "eg05"
 path = "src/eg05.rs"
 
-[dependencies.sdl2]
+[dependencies]
+sdl2 = "0.18"
