@@ -39,6 +39,11 @@ path = "src/eg06.rs"
 name = "eg07"
 path = "src/eg07.rs"
 
+[[bin]]
+
+name = "eg08"
+path = "src/eg08.rs"
+
 [dependencies]
 sdl2 = "0.18"
 sdl2_image = "0.18.0"
