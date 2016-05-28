@@ -30,13 +30,13 @@ fn main() {
     // Textures can be used more efficiently by the GPU. (If one is available.)
     let texture = match renderer.create_texture_from_surface(&surface) {
         Ok(texture) => texture,
-        Err(err)    => panic!("failed to convert surface: {}", err)
+        Err(err)    => panic!("failed to convert surface: {:?}", err)
     };
 
     let _ = renderer.clear();
     // Display the texture.
     // Omitting the src & dst Rect arguments will cause our image to stretch across the entire buffer.
-    // Try passing Some(surface.get_rect()) for src & dst instead of None & see how things change.
+    // Try passing Some(surface.rect()) for src & dst instead of None & see how things change.
     let _ = renderer.copy(&texture, None, None);
     let _ = renderer.present();
 
